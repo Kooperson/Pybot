@@ -1,7 +1,7 @@
 import logging
 
 import aiogram
-import keyboard
+
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 
@@ -9,7 +9,6 @@ from config import TOKEN
 
 API_TOKEN = TOKEN
 import keyboard
-
 
 logging.basicConfig(level=logging.INFO)
 
@@ -28,9 +27,9 @@ async def send_welcome(message: types.Message):
     await message.reply("Привет, я бот Фифо", reply_markup=keyboard.greet_kb)
 
 
-@dp.message_handler(Text(equals="Привет"))
+@dp.message_handler(Text(equals='Привет'))
 async def echo(message: types.Message):
-    await message.answer("Привет👋!", reply_markup=keyboard.ReplyKeyboardMarkup)
+    await message.answer("Привет!", reply_markup = keyboard.ReplyKeyboardRemove())
 
 
 if __name__ == '__main__':
