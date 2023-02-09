@@ -31,6 +31,15 @@ async def send_welcome(message: types.Message):
 async def echo(message: types.Message):
     await message.answer("Привет!", reply_markup = keyboard.ReplyKeyboardRemove())
 
+@dp.message_handler()
+async def echo(message : types.Message):
+    print(message.text)
+    if message.text == 'test' :
+        await  message.reply("bip-bop")
+    if message.text == '👋' :
+        await  message.reply("🙃")
+    else:
+        await message.answer('What?')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
